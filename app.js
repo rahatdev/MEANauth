@@ -12,15 +12,15 @@ const users = require('./routes/users')
 // Port number
 const port = 3000;
 
-app.use(cors()); // allows access from public endpoints
+//app.use(cors()); // allows access from public endpoints
 
 // Body Parser Middleware
-app.use(bodyParser.json())
+//app.use(bodyParser.json())
 
 app.use('/users', users)
 
 // Index route
-app.get("/", (req, res) => {
+app.get('/', (req, res) => {
     console.log("initial get");
     res.send('Invalid Endpoint.')
 })
