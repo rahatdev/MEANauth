@@ -56,17 +56,14 @@ router.post('/authenticate', (req, res, next) => {
             } else {
                 res.send({ success: false, msg: 'Password did not match.'})
             }
-
-
-            
         })
     });
 
 })
 
 // Profile - protected with auth token
-router.get('/profile', (req, res, next) => {
-    res.send('PROFILE PAGE')
+router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res, next) => {
+    res.json({user: req.user});
 })
 
 module.exports = router
