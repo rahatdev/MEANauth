@@ -30,8 +30,15 @@ const port = 3000;
 app.use(express.static(path.join(__dirname, 'public')))
 
 // Body Parser Middleware
-app.use(bodyParser.json()) //?
+app.use(bodyParser.json()) // Parses req body for post (of get) requests, i.e in users.js
 
+// Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+require('./config/passport')(passport);
+
+// Users routes
 app.use('/users', users)
 
 // Index route
