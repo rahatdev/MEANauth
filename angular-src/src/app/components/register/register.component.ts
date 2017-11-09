@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ValidateService } from '../../services/validate.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,10 @@ export class RegisterComponent implements OnInit {
   password: String;
   emailMessage: String = "We'll never share your email with anyone else.";
 
-  constructor(private _validate: ValidateService) { }
+  constructor(
+    private _validate: ValidateService, 
+    private _auth: AuthService
+  ) { }
 
   ngOnInit() {
   }

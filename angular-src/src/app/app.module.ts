@@ -11,7 +11,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 
-import { ValidateService } from './services/validate.service'
+import { ValidateService } from './services/validate.service';
+import { AuthService } from './services/auth.service';
 
 const appRoutes = [
   { path: 'home', component: HomeComponent },
@@ -38,7 +39,10 @@ const appRoutes = [
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [ValidateService],
+  providers: [
+    ValidateService,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
