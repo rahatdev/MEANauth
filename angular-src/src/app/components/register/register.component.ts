@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
   emailMessage: String = "We'll never share your email with anyone else.";
 
   constructor(
-    private _validate: ValidateService, 
+    private _validate: ValidateService,
     private _auth: AuthService
   ) { }
 
@@ -42,9 +42,15 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    console.log("Registrations Successful!");
+    this._auth.registerUser(user).subscribe( data => {
+      if(data.success){
+        console.log(data.msg);
+      } else {
+        console.log(data.msg);
+      }
+    });
     // check if username exists
-    // validate if correct email used.
+    // password strength requirements
     // post to backend
 
   }

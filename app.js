@@ -24,7 +24,7 @@ const users = require('./routes/users')
 // Port number
 const port = 3000;
 
-//app.use(cors()); // allows access from public endpoints
+app.use(cors()); // allows access from public endpoints
 
 // Set Static Folder
 app.use(express.static(path.join(__dirname, 'public')))
