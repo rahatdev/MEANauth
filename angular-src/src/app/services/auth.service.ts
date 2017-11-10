@@ -7,7 +7,7 @@ export class AuthService {
   authToken: any;
   user: any;
 
-  constructor(private _http: Http) { }
+  constructor( private _http: Http ) { }
 
   registerUser(user) {
     let headers = new Headers();
@@ -31,14 +31,15 @@ export class AuthService {
 
       //Save local variables
       this.authToken = token;
-      const newUser = {
-        id: user.id,
-        name : user.name,
-        username: user.username,
-        email: user.email
-      }
-      this.user = newUser;
+      this.user = user;
     } 
   }
+
+  logout(){
+    this.authToken = null;
+    this.user = null;
+    localStorage.clear();
+  }
+
 
 }
