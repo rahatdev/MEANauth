@@ -64,7 +64,8 @@ export class AuthService {
   }
   
   isLoggedIn(){
-    return tokenNotExpired();
+    //console.log(tokenNotExpired('id_token'));
+    return tokenNotExpired('id_token');
   }
 
   // getUser(){
