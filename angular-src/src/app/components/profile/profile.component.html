@@ -1,3 +1,21 @@
-<p>
-  profile works!
-</p>
+<div *ngIf="user">
+<br/>
+<h2 class="page-header">  {{user.name}}</h2>
+<br/>
+
+<ul class="list-group">
+  
+  <li class="list-group-item">
+    <span class="tag tag-default tag-pill float-xs-right">
+      <b>Username: </b>
+    </span>
+    {{user.username}}
+  </li>
+  <li class="list-group-item">
+    <span class="tag tag-default tag-pill float-xs-right">
+      <b>Email: </b>
+    </span>
+    {{user.email}}
+  </li>
+</ul>
+</div>
