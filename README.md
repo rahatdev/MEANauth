@@ -1,5 +1,8 @@
 Basic Authentication applicaiton built on MEAN stack
 
+## Style 
+[Bootswatch - Sandstone](https://bootswatch.com/sandstone/)
+
 
 ## Scalability improvements
 - Shared models?

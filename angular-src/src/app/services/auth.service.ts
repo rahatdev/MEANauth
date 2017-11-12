@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 export class AuthService {
   authToken: any;
   user: any;
+  private _api: string = 'http://localhost:3000/users';
 
   constructor( private _http: Http ) { }
 
@@ -23,6 +24,27 @@ export class AuthService {
       .map(res => res.json());
   }
 
+  logout(){
+    this.authToken = null;
+    this.user = null;
+    localStorage.clear();
+  }
+
+
+
+  getUser(){
+    //let token = localStorage.getItem('id_token');
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+
+    return this._http.get('http://localhost:3000/users/profile', {headers: headers})
+    .map(res => res.json());
+  }
+
+
+
   storeUserData(token, user) {
     if (token != undefined && user != undefined){
       //Save to local storage
@@ -35,11 +57,14 @@ export class AuthService {
     } 
   }
 
-  logout(){
-    this.authToken = null;
-    this.user = null;
-    localStorage.clear();
+  loadToken(){
+    const token = localStorage.getItem('id_token');
+    this.authToken = token;
   }
-
-
+  
+  
+  // getUser(){
+  //   let user = localStorage.getItem('user');
+  //   return user;
+  // }
 }
