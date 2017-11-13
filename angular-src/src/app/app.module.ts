@@ -15,13 +15,14 @@ import { RegisterComponent } from './components/register/register.component';
 
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
+import { AuthGuard } from './guards/auth.guard';
 
 const appRoutes = [
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },  //TODO add route guard
-  { path: 'dashboard', component: DashboardComponent },  //TODO add route guard
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },  //TODO add route guard
+  { path: 'dashboard', component: DashboardComponent, canActivate: [ AuthGuard]  },  //TODO add route guard
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ]
@@ -45,7 +46,8 @@ const appRoutes = [
   ],
   providers: [
     ValidateService,
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
