@@ -1,1 +1,5 @@
 node_modules/
+public/main.bundle.js.map
+public/polyfills.bundle.js.map
+public/styles.bundle.js.map
+public/vendor.bundle.js.map
